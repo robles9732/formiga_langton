@@ -1,23 +1,23 @@
 import tkinter as tk
 
 janela = tk.Tk()
-janela.geometry("1400x800")
+janela.geometry("800x800")
 janela.title("Formiga de Langton")
 
 cel_colors = ['#fff', '#000'] # define a cor da célula, 0 = branca, 1 = preta
 cor = 0
-x = 17 
-y = 31  # índices de linha e coluna
+x = 50 
+y = 50  # índices de linha e coluna
 matriz_labels = [] # cria a matriz a mudar de cor
 contador = 1
 
 frame = tk.Frame(janela)
 frame.grid(row=0, column=0, padx=10, pady=10, stick = 'ew')
-for i in range(64):
+for i in range(98):
     linha = []
-    for j in range(126):
-        lbcelula = tk.Label(frame, width=2, height=1 , background=cel_colors[cor], font=("Arial", 2))
-        lbcelula.grid(row=i, column=j, padx=1, pady=1)
+    for j in range(98):
+        lbcelula = tk.Label(frame, width=2, height=1 , background=cel_colors[cor], font=("Arial", 1))
+        lbcelula.grid(row=i, column=j)
         linha.append(lbcelula)
     matriz_labels.append(linha) #cria a matriz de linhas e colunas de labels
 
@@ -64,7 +64,7 @@ def caminho_formiga():
     matriz_labels[x],[y]        # Move de acordo com a direção ordenada no último movimento
     matriz_labels[x_out][y_out].configure(background = cel_colors[cor]) # Altera a cor da célula deixada
     
-    janela.after(50, caminho_formiga) # Repete o loop a cada 50 milisegundos
+    janela.after(5, caminho_formiga) # Repete o loop a cada 50 milisegundos
 
 caminho_formiga() # Repete o loop
 
